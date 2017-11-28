@@ -48,6 +48,7 @@ function loopTwo(element){
 }
 
 function viewToDo(){
+    console.log("Le To-Do List".toUpperCase())
     toDo.forEach(loopTwo)
     console.log("\n\n")
 }
@@ -60,7 +61,7 @@ function addToDo(){
 
 function editToDo(){
     var itemToDelete = prompt("Edit item number: ?") - 1
-    var changeItemTo = prompt("Modify it to read as: ?")
+    var changeItemTo = prompt("Modify it to read as: ?", toDo[itemToDelete])
     if (itemToDelete >= -1){
 
     }toDo.splice(itemToDelete, 1, changeItemTo)
