@@ -5,7 +5,7 @@ var toDo = [];
 function runApp() {
     var whatToDo = '';
     while (whatToDo !== 'quit') {
-        whatToDo = prompt("What would you like to do?\nTry one of these:\n1. Add\n2. View\n3. Edit\n4. Delete\n5. Quit").toLowerCase();
+        whatToDo = prompt("What would you like to do?\nPick one of these:\n1. Add\n2. View\n3. Edit\n4. Delete\n5. Quit").toLowerCase();
         if (whatToDo === 'view') {
             viewToDo();
         } else if (whatToDo === 'add') {
@@ -19,17 +19,15 @@ function runApp() {
     console.log("Alright, you quit, quitter.");
 }
 
-function loopToDos(element, i) {
-    console.log("--".repeat(30));
-    console.log(1 + i + ".  " + element);
-}
-
 function viewToDo() {
     if (toDo.length === 0){
-        console.log("You have no items in your to-do.\nEnter some items first. ");
+        console.log("You have no items in your to-do.\nAdd some items first. ");
     }else{
         console.log("\n\nLe To-Do List\n");
-        toDo.forEach(loopToDos);
+        toDo.forEach(function (element, i) {
+            console.log("--".repeat(30));
+            console.log(1 + i + ".  " + element);
+        });
         console.log("\n\n");
     }
 }
@@ -42,7 +40,7 @@ function addToDo() {
 
 function editToDo() {
     if (toDo.length === 0){
-        console.log("You have no items in your to-do.\nEnter some items first. ");
+        console.log("You have no items in your to-do.\nAdd some items first. ");
     }else{
         console.log("\n\nHere is your list of to-dos: ")
         viewToDo()
@@ -58,7 +56,7 @@ function editToDo() {
 
 function deleteToDo() {
     if (toDo.length === 0){
-        console.log("You have no items in your to-do.\nEnter some items first. ");
+        console.log("You have no items in your to-do.\nAdd some items first.");
     }else{
         console.log("\n\nHere is your list of to-dos: ")
         viewToDo()
