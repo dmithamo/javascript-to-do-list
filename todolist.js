@@ -1,6 +1,7 @@
 'use strict'
 
 let todoList = [];
+let todoItem = {};
 
 
 // Mouse over the add-todo button
@@ -13,21 +14,21 @@ addButton.addEventListener("mouseout", function () {
 });
 
 // Function adds an event to the todo list, and calls the listTodos() function to display added events
-addButton.addEventListener("click", addTodo);
+// addButton.addEventListener("click", addTodo);
 function addTodo(){
     // future: Don't add item if already in todoList
     let proceed = true;
     while(proceed){
-        let itemTodo = {};
-        itemTodo["todoTitle"] = prompt("Remember to: ", "Buy a Range Rover");
-        if(itemTodo.todoTitle){
-            itemTodo["todoDueDate"] = prompt("Date: ", "30th-Dec-2020");
+        let todoItem = {};
+        todoItem["todoTitle"] = prompt("Remember to: ", "Buy a Range Rover");
+        if(todoItem.todoTitle){
+            todoItem["todoDueDate"] = prompt("Date: ", "30th-Dec-2020");
         }
-        if(itemTodo.todoDueDate){
-            itemTodo["todoDueTime"] = prompt("Time: ", "3.30pm");
+        if(todoItem.todoDueDate){
+            todoItem["todoDueTime"] = prompt("Time: ", "3.30pm");
         }
-        if(itemTodo.todoTitle && itemTodo.todoDueDate && itemTodo.todoDueTime){
-            todoList.push(itemTodo);
+        if(todoItem.todoTitle && todoItem.todoDueDate && todoItem.todoDueTime){
+            todoList.push(todoItem);
             listTodos();
 
             let rows = document.getElementsByClassName("td-body");
@@ -46,6 +47,36 @@ function addTodo(){
     }
 
 }
+
+
+// Re-factoring the addTodo function
+addButton.addEventListener("click", newTodo);
+let itemCounter = todoList.length;
+function newTodo(){
+    // Create input fields when "+" is clicked
+    itemCounter += 1;
+    let emptyItem = "<tr>" + "<td class=\"no-style td-body\">" + itemCounter + "." + "</td>"+ "<td>" + "<input id=\"title0" + itemCounter + "\"" + "required placeholder=\"Remember to?\" class=\"title-style td-body\" type=\"text\">" + "</td>" + "<td>" + "<input id=\"date0" + itemCounter + "\"" + "required class=\"date-style td-body\" type=\"date\">" + "</td>" + "<td>" + "<input id=\"time0" + itemCounter + "\"" + "required class=\"time-style td-body\" type=\"time\">" + "</td>" + "</tr>";
+    document.querySelector("#table-body").innerHTML += emptyItem;
+    
+    document.getElementById("title0" + itemCounter).addEventListener("change", function(){
+        this.style.color = "cyan"
+        todoItem["todoTitle"] = this.value;
+    });
+    document.getElementById("date0" + itemCounter).addEventListener("change", function(){
+        this.style.color = "red"
+        todoItem["todoDueDate"] = this.value;
+    });
+    document.getElementById("time0" + itemCounter).addEventListener("change", function(){
+        this.style.color = "blue"
+        todoItem["todoDueTime"] = this.value;
+    });
+
+    if(todoItem.todoTitle && todoItem.todoDueDate && todoItem.todoDueTime){
+        todoList.push(todoItem);
+    }
+    
+}
+
 
 
 // Alters the contents of the table-tag once a todo has been added to the todo list
@@ -74,8 +105,10 @@ function listTodos(){
             for(let b = 0; b < allItems.length; b++){
                 document.querySelector("#table-body").innerHTML += allItems[b];
             }
-
+            
             i++;
         }
     }
 }
+
+listTodos()
