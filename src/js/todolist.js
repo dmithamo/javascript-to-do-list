@@ -1,116 +1,139 @@
 'use strict'
 
+// The container for all todo's, and a tracker for how many todo's there are.
 let todoList = [];
-let todoItem = {};
+
+// Animate + button
+function hoverAddButton(){
+    let hoverAddButton = document.querySelector("#add-new");
+    hoverAddButton.addEventListener("mouseover", function(){
+        hoverAddButton.classList.add("hovered-button")
+    });
+    hoverAddButton.addEventListener("mouseout", function(){
+        hoverAddButton.classList.remove("hovered-button")
+    });
+}
+
+// Call emptyTodoField() when + is clicked
+function clickAddButton(){
+    let clickAddButton = document.querySelector("#add-new");
+    clickAddButton.addEventListener("click", emptyTodoField)
+}
+
+// Make empty input fields for creating todo
+function emptyTodoField(){
+    // Empty todo Field
+    let emptyTodoField = "<tr id=\"empty-row\">" + "<td class=\"no-style td-body\">" + "." + "</td>"+ "<td>" + "<input id=\"title0"  + "\"" + "required placeholder=\"Remember to?\" class=\"title-style td-body\" type=\"text\">" + "</td>" + "<td>" + "<input id=\"date0"  + "\"" + "required class=\"date-style td-body\" type=\"date\" min=\"2017-12-18\">" + "</td>" + "<td>" + "<input id=\"time0"  + "\"" + "required class=\"time-style td-body\" type=\"time\">" + "</td>" + "</tr>";;
+    
+    // Save/Discard buttons
+    let saveDelete = "<p style=\"text-align:center; margin:auto\"><button class=\"save-delete\" id=\"save\">Save</button><button class=\"save-delete\" id=\"discard\">Discard</button></p>"
+    
+    let tableBody = document.querySelector("#table-body");
+    let emptyExists = !!document.querySelector("#empty-row");
+    
+    // Check if there exists an empty row; add one if not
+    if(emptyExists){
+        alert("Save or Discard the current to do first.")
+    }else{
+        // Append empty todo field
+        tableBody.innerHTML += emptyTodoField;
+       
+        // Append Save/Discard buttons
+        document.querySelector("#table-tag").innerHTML = saveDelete;
+        
+        // 'Disable' + button
+        document.querySelector("#add-new").classList.add("hidden-button");
+
+        // Execute code to collect user-input  
+        addTodo()
+    }
+}
 
 
-// Mouse over the add-todo button
-let addButton = document.querySelector("#add-new");
-addButton.addEventListener("mouseover", function () {
-    addButton.classList.add("hovered-button");
-});
-addButton.addEventListener("mouseout", function () {
-    addButton.classList.remove("hovered-button")
-});
-
-// Function adds an event to the todo list, and calls the listTodos() function to display added events
-// addButton.addEventListener("click", addTodo);
+// Collect user details for  todoItem
 function addTodo(){
-    // future: Don't add item if already in todoList
-    let proceed = true;
-    while(proceed){
-        let todoItem = {};
-        todoItem["todoTitle"] = prompt("Remember to: ", "Buy a Range Rover");
-        if(todoItem.todoTitle){
-            todoItem["todoDueDate"] = prompt("Date: ", "30th-Dec-2020");
+    let todoItem = {todoTitle:"", todoDueDate:"", todoDueTime:""};
+
+    // Listen for change in input fileds, collect user input
+
+    // 1. The Title
+    let title = document.querySelector("#title0");
+    title.addEventListener("change", function(){
+        if(this.value){
+            todoItem["todoTitle"] = this.value;
+        }else{
+            console.log("Please check the title")
         }
-        if(todoItem.todoDueDate){
-            todoItem["todoDueTime"] = prompt("Time: ", "3.30pm");
-        }
-        if(todoItem.todoTitle && todoItem.todoDueDate && todoItem.todoDueTime){
-            todoList.push(todoItem);
-            listTodos();
-
-            let rows = document.getElementsByClassName("td-body");
-            for(let a = 0; a < rows.length; a++){
-                rows[a].classList.add("style-table-item");
-            }
-
-            alert("Success!");
- 
-        }
-        else{
-            alert("You entered an invalid todo. A todo must have Title, Date, and Time.\nPlease try again.")
-        }
-
-        proceed = confirm("Add another to do?");
-    }
-
-}
-
-
-// Re-factoring the addTodo function
-addButton.addEventListener("click", newTodo);
-let itemCounter = todoList.length;
-function newTodo(){
-    // Create input fields when "+" is clicked
-    itemCounter += 1;
-    let emptyItem = "<tr>" + "<td class=\"no-style td-body\">" + itemCounter + "." + "</td>"+ "<td>" + "<input id=\"title0" + itemCounter + "\"" + "required placeholder=\"Remember to?\" class=\"title-style td-body\" type=\"text\">" + "</td>" + "<td>" + "<input id=\"date0" + itemCounter + "\"" + "required class=\"date-style td-body\" type=\"date\">" + "</td>" + "<td>" + "<input id=\"time0" + itemCounter + "\"" + "required class=\"time-style td-body\" type=\"time\">" + "</td>" + "</tr>";
-    let saveDelete = "<p id=\"save-delete\"><img class=\"icon\" src=\"save-icon.jpg\" alt=\"Save\"><img class=\"icon\" src=\"delete-icon.jpg\" alt=\"Delete\"></p>"
-    emptyItem += saveDelete;
-    document.querySelector("#table-body").innerHTML += emptyItem;
+    });
     
-    document.getElementById("title0" + itemCounter).addEventListener("change", function(){
-        this.style.color = "cyan"
-        todoItem["todoTitle"] = this.value;
+    // 2. The DueDate
+    let dueDate = document.querySelector("#date0");
+    dueDate.addEventListener("change", function(){
+        if(this.value){
+            todoItem["todoDueDate"] = this.value;
+        }else{
+            console.log("Check the date")
+        }
     });
-    document.getElementById("date0" + itemCounter).addEventListener("change", function(){
-        this.style.color = "red"
-        todoItem["todoDueDate"] = this.value;
-    });
-    document.getElementById("time0" + itemCounter).addEventListener("change", function(){
-        this.style.color = "cyan"
+    
+    // 3. The DueTime
+    let dueTime = document.querySelector("#time0");
+    dueTime.addEventListener("change", function(){
         todoItem["todoDueTime"] = this.value;
+        
     });
 
-    if(todoItem.todoTitle && todoItem.todoDueDate && todoItem.todoDueTime){
-        todoList.push(todoItem);
-    }
-    
+    saveOrDiscard(todoItem)
 }
 
-
-
-// Alters the contents of the table-tag once a todo has been added to the todo list
-let tableTag = document.getElementById("table-tag");
-addButton.addEventListener("click", function(){
-    if(todoList.length != 0){
-        tableTag.innerText = "Your todo List. Press \"+\" to add more todos";
-    }
-});
-
-
-
-// Lists the todos that are in the todoList 
-function listTodos(){
-    if(todoList.length == 0){
-        alert("You have no items in your to-do list. Add some first");
-    }
-    else{
-        let i = 0;
-        let allItems = [];
-        while(i < todoList.length){
-            let item = todoList[i];
-            let listItem = "<tr><td class=\"no-style td-body\">" + (i+1) + ". " + "</td>" + "<td class=\"title-style td-body\">" + item.todoTitle + "</td>" + "<td class=\"date-style td-body\">" + item.todoDueDate + "</td>" + "<td class=\"time-style td-body\">" + item.todoDueTime + "</td></tr>";
-            allItems.push(listItem)
-            document.querySelector("#table-body").innerHTML = "";
-            for(let b = 0; b < allItems.length; b++){
-                document.querySelector("#table-body").innerHTML += allItems[b];
-            }
-            
-            i++;
+function saveOrDiscard(item){
+    // Save
+    document.querySelector("#save").addEventListener("click", function(){
+        if(item.todoTitle && item.todoDueDate && item.todoDueTime){
+            todoList.push(item);
+        }else{
+            alert("Not saved! \n\nTodo item must have Title, Date due, and Time due. Please try again")
         }
-    }
+        
+        // Replace original table-tag, re-enable + button and list todo's
+        restoreTable();
+        listTodos()
+
+    });
+    
+    // Discard
+    document.querySelector("#discard").addEventListener("click", function(){
+        restoreTable();
+        listTodos();
+   });
+
 }
 
-listTodos()
+function restoreTable(){
+    let originalTag = "<p class=\"below-table\" id=\"table-tag\">Click \"+\" to add todo's</p>";
+    document.querySelector("#table-tag").innerHTML = originalTag;
+    
+    // 'Re-enable' + button
+    document.querySelector("#add-new").classList.remove("hidden-button");
+
+    // Re-set table
+    let originalTableBody = "<tbody id=\"table-body\"></tbody>"
+    document.querySelector("#table-body").innerHTML = originalTableBody;
+}
+
+function listTodos(){
+    let row;
+    let todoItem;
+    // Access all todo Items
+    for(let i = 0; i < todoList.length; i++){
+        todoItem = todoList[i];
+        row = "<tr><td class=\"no-style td-body-saved\">" + (i+1) + "." + "</td><td class=\"title-style td-body-saved\">" + todoItem.todoTitle + "</td><td class=\"date-style td-body-saved\">" + todoItem.todoDueDate + "</td><td class=\"time-style td-body-saved\">" + todoItem.todoDueTime + "</td></tr>"
+        document.querySelector("#table-body").innerHTML += row;
+    }
+
+
+}
+
+// Execute on start
+hoverAddButton();
+clickAddButton();
