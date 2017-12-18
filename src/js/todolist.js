@@ -128,7 +128,7 @@ function restoreTable() {
     let originalTag = "<p class=\"below-table\" id=\"table-tag\"></p>";
     document.querySelector("#table-tag").innerHTML = originalTag;
     if(todoList.length == 0){
-        document.querySelector("#table-tag").innerText = "Too too empty :-] ";
+        document.querySelector("#table-tag").innerText = "So empty :-[ ";
     }
 
     // 'Re-enable' + button
