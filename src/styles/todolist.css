@@ -187,6 +187,11 @@ p{
 }
 
 
+.editing-title{
+    color:grey;
+    background: grey;
+}
+
 .col-4{
     width: 33.33%;
 }
