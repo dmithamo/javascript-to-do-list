@@ -26,11 +26,38 @@ function clickAddButton() {
     });
 }
 
+// A necessary by the way - get current date and time
+function dateNow(){
+    let today = new Date();
+    let year = today.getFullYear()
+    let mm = today.getMonth() + 1
+    if(mm < 10){
+        mm = '0' + today.getMonth()
+    }
+    
+    let dd = today.getDate();
+    if(dd < 10){
+        dd = '0' + today.getDate()
+    }
+
+    today = year + '-' + mm + '-' + dd;
+    return today;
+}
+
+function currentTime(){
+    let today = new Date();
+    let time = today.getHours() + ':' + today.getMinutes();
+    return time
+}
 
 // Make empty input fields for creating todo
-function emptyTodoField() {
+function emptyTodoField(title, date, time) {
     // Empty todo Field
-    let emptyTodoField = "<tr id=\"empty-row\">" + "<td class=\"no-style td-body\">" + "." + "</td>" + "<td>" + "<input id=\"title0" + "\"" + "required placeholder=\"Remember to?\" class=\"title-style td-body\" type=\"text\">" + "</td>" + "<td>" + "<input id=\"date0" + "\"" + "required class=\"date-style td-body\" type=\"date\" max=\"2018-12-18\" min=\"2017-12-18\">" + "</td>" + "<td>" + "<input id=\"time0" + "\"" + "required class=\"time-style td-body\" type=\"time\">" + "</td>" + "</tr>";;
+    title = ""
+    date = dateNow()
+    time = currentTime();
+
+    let emptyTodoField = "<tr id=\"empty-row\">" + "<td class=\"no-style td-body\">" + "." + "</td>" + "<td>" + "<input id=\"title0" + "\"" + "required placeholder=\"Remember to: \" class=\"title-style td-body\" type=\"text\" value=" + title + ">" + "</td>" + "<td>" + "<input id=\"date0" + "\"" + "required class=\"date-style td-body\" type=\"date\"  value=" + date + " min=" + date + ">" + "</td>" + "<td>" + "<input id=\"time0" + "\"" + "required class=\"time-style td-body\" type=\"time\" value=" + time + ">" + "</td>" + "</tr>";
 
 
     let tableBody = document.querySelector("#table-body");
@@ -45,7 +72,7 @@ function emptyTodoField() {
 
         // Append and animate Save | Discard and Add Todo Buttons
         document.querySelector("#table-tag").innerHTML = saveDelete;
-        animateSaveDiscardButtons()
+        animateButtons()
 
         // Execute code to collect user-input  
         addTodo()
@@ -53,7 +80,7 @@ function emptyTodoField() {
 }
 
 // Single this out to allow to DRY multiple calls
-function animateSaveDiscardButtons() {
+function animateButtons() {
     // Animate Save button
     document.querySelector("#save").addEventListener("mouseover", function () {
         this.classList.add("hovered-save")
@@ -90,37 +117,47 @@ function addTodo() {
     title.addEventListener("change", function () {
         if (this.value) {
             todoItem["todoTitle"] = this.value;
-        } else {
-            console.log("Please check the title")
         }
-    });
-
-    // 2. The DueDate
-    let dueDate = document.querySelector("#date0");
-    dueDate.addEventListener("change", function () {
-        if (this.value) {
-            todoItem["todoDueDate"] = this.value;
-        } else {
-            console.log("Check the date")
-        }
-    });
+        });
+        
+        // 2. The DueDate
+        let dueDate = document.querySelector("#date0");
+        dueDate.addEventListener("change", function () {
+            if (this.value) {
+                todoItem["todoDueDate"] = this.value;
+            } else {
+                console.log("Please check the date")
+            }
+            
+        });
 
     // 3. The DueTime
     let dueTime = document.querySelector("#time0");
     dueTime.addEventListener("change", function () {
         todoItem["todoDueTime"] = this.value;
     });
+
     saveOrDiscard(todoItem)
 }
 
 function saveOrDiscard(item) {
     // Save
     document.querySelector("#save").addEventListener("click", function () {
-        if (item.todoTitle && item.todoDueDate && item.todoDueTime) {
-            todoList.push(item);
-        } else {
-            alert("Not saved! \n\nTodo item must have Title, Date due, and Time due. Please try again")
+        if(item.todoTitle && item.todoDueDate && item.todoDueTime){
+            todoList.push(item)
         }
+
+        else if (!item.todoTitle) {
+            alert("Not saved!" + "\nThe title: " + item.todoTitle + " is incomprehensible");
+            emptyTodoField()
+        } 
+        else if(!item.todoDueDate) {
+            alert("Not saved!" + "\nThe Due date: " + item.todoDueDate + " is invalid");
+        } 
+        else if(!item.todoDueTime) {
+            alert("Not saved!" + "\nThe Due time: " + item.todoDueTime + " is invalid");
+        }
+
         // Replace original table-tag, re-enable + button and list todo's
         restoreTable();
         listTodos()
@@ -157,70 +194,27 @@ function listTodos() {
         row = "<tr><td class=\"no-style td-body-saved\">" + (i + 1) + "." + "</td><td class=\"title-style td-body-saved\">" + todoItem.todoTitle + "</td><td class=\"date-style td-body-saved\">" + todoItem.todoDueDate + "</td><td class=\"time-style td-body-saved\">" + todoItem.todoDueTime + "</td></tr>"
         document.querySelector("#table-body").innerHTML += row;
     }
-    editTodoTitle();
-    editTodoDueDate();
-    editTodoDueTime();
+    editTodo();
 }
 
 
-// Make it possible to edit title by using a prompt
-function editTodoTitle() {
-    // Select all todo Titles, addEventListener to Allow for modifying of content
-    let toEdit = document.getElementsByClassName("title-style");
-
-    for (let i = 0; i < toEdit.length; i++) {
-        toEdit[i].addEventListener("click", function () {
-            // this.innerText = prompt("Modify this to: ", this.innerText);
-            emptyTodoField();
-
-            // Replace value of Title with current value
-            document.querySelector("#title0").value = this.innerText
-
-            // Replace value of Date due with current value
-            document.querySelector("#date0").value = this.innerHTML
-
-            // Replace value of Time due with current value
-            document.querySelector("#time0").value = this.innerHTML
-
+// 
+function editTodo(){
+    //1. Edit title
+    
+    // Select Titles, add dblclick listener
+    let titles = document.getElementsByClassName("title-style");
+    for(let i = 0; i < titles.length; i++){
+        titles[i].addEventListener("dblclick", function(){
+            this.style.color = "cyan";
+            alert("You double clicked me...")
         })
     }
+    
+    
 }
 
-// Make date editable by selecting new date
-function editTodoDueDate() {
-    // Select all todo Dates and addEventListener to allow for modifying of content
-    let toEdit = document.getElementsByClassName("date-style");
-    for (let i = 0; i < toEdit.length; i++) {
-        toEdit[i].addEventListener("click", function () {
 
-            // On click: define a date input field below table, allowing user to selct new date. 
-            // Add Save | Discard Buttons too, and 'Disable' Add Todo Button
-            let dateField = "<p id=\"empty-edit\">" + "<input value=\"" + this.innerText + "\"" + "required class=\"date-style td-body\" type=\"date\" max=\"2018-12-18\" min=\"2017-12-18\">" + "</p>";
-            document.querySelector("#table-tag").innerHTML = dateField + saveDelete;
-            animateSaveDiscardButtons();
-
-            // Update Value of date in 'db' and list updated Todos on clicking Save | Discard Buttons
-            saveOrDiscard();
-        })
-    }
-}
-
-// Make time editable by selecting new time
-function editTodoDueTime() {
-    let toEdit = document.getElementsByClassName("time-style");
-    for (let i = 0; i < toEdit.length; i++) {
-        toEdit[i].addEventListener("click", function () {
-            // this.innerText = prompt("Edit to: ", this.innerText); 
-            let timeField = "<p id=\"empty-edit\">" + "<input value=\"" + this.innerText + "\"" + "required class=\"time-style td-body\" type=\"time\">" + "</p>";
-            document.querySelector("#table-tag").innerHTML = timeField + saveDelete;
-            animateSaveDiscardButtons();
-
-            // Update Value of time in 'db' and list updated Todos on clicking Save | Discard Buttons
-            saveOrDiscard();
-
-        })
-    }
-}
 
 // Execute on start
 hoverAddButton()
