@@ -148,6 +148,18 @@ function listTodos() {
         row = "<tr><td class=\"no-style td-body-saved\">" + (i + 1) + "." + "</td><td class=\"title-style td-body-saved\">" + todoItem.todoTitle + "</td><td class=\"date-style td-body-saved\">" + todoItem.todoDueDate + "</td><td class=\"time-style td-body-saved\">" + todoItem.todoDueTime + "</td></tr>"
         document.querySelector("#table-body").innerHTML += row;
     }
+    editTodo();
+}
+
+
+function editTodo(){
+    // AddEventlisteners to all editable elements
+    let toEdit = document.getElementsByClassName("title-style");
+    for(let i = 0; i < toEdit.length; i++){
+        toEdit[i].addEventListener("click", function(){
+            this.innerText = prompt("Edit to: ", this.innerText); 
+        })
+    } 
 }
 
 // Execute on start
