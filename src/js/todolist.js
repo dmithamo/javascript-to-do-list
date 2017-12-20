@@ -238,7 +238,7 @@ function restoreTable() {
     if (todoList.length == 0) {
         document.querySelector("#table-tag").innerHTML = "So empty :-[ ";
     }else{
-        document.querySelector("#table-tag").innerHTML = "Edit todo:-<br>Click on Title, Date or Time.<br><br>Delete Todo:-<br>Double click its number. ";
+        document.querySelector("#table-tag").innerHTML = "Edit a todo:-<br>Double click its Title, Date or Time.<br><br>Delete a Todo:-<br>Double click its number. ";
     }
     
     // 'Re-enable' + button
@@ -257,6 +257,7 @@ function listTodos() {
         row = "<tr><td class=\"no-style td-body-saved\">" + todoItem.todoId + "." + "</td><td class=\"title-style td-body-saved\">" + todoItem.todoTitle + "</td><td class=\"date-style td-body-saved\">" + todoItem.todoDueDate + "</td><td class=\"time-style td-body-saved\">" + todoItem.todoDueTime + "</td></tr>"
         document.querySelector("#table-body").innerHTML += row;
     }
+    
     deleteTodo();
     editTodo();
 
