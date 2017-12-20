@@ -205,15 +205,12 @@ function saveOrDiscard(item) {
         }
 
         else if(item.todoTitle === ""){
-            emptyTodoField(title, date, time);
             alert("You did not provide a Title. Rudia.")
         }
         else if(item.todoDueDate=== ""){
-            emptyTodoField(title, date, time);
             alert("You did not provide Date. Rudia.")
         }
         else if(item.todoDueTime === ""){
-            emptyTodoField(title, date, time);
             alert("You did not provide Time. Rudia.")
         }
 
@@ -231,20 +228,23 @@ function saveOrDiscard(item) {
 }
 
 function restoreTable() {
-    let originalTag = "<p class=\"below-table\" id=\"table-tag\"></p>";
-    
-    document.querySelector("#table-tag").innerHTML = originalTag;
-    if (todoList.length == 0) {
-        document.querySelector("#table-tag").innerText = "So empty :-[ ";
-    }
-
-    // 'Re-enable' + button
-    addButton.classList.remove("hidden-button");
-
     // Re-set table
     let originalTableBody = "<tbody id=\"table-body\"></tbody>"
     document.querySelector("#table-body").innerHTML = originalTableBody;
+ 
+    // Restore atble tag
+    let originalTag = "<p class=\"below-table\" id=\"table-tag\"></p>";
+    document.querySelector("#table-tag").innerHTML = originalTag;
+    if (todoList.length == 0) {
+        document.querySelector("#table-tag").innerHTML = "So empty :-[ ";
+    }else{
+        document.querySelector("#table-tag").innerHTML = "Edit todo:-<br>Click on Title, Date or Time.<br><br>Delete Todo:-<br>Double click its number. ";
+    }
+    
+    // 'Re-enable' + button
+    addButton.classList.remove("hidden-button");
 }
+
 
 function listTodos() {
     let row;
@@ -275,7 +275,7 @@ function editTodo() {
     let date;
     let time;
     for (let i = 0; i < todoDataCells.length; i++) {
-        todoDataCells[i].addEventListener("click", function () {
+        todoDataCells[i].addEventListener("dblclick", function () {
             
             // 
             clickedTodo = todoDataCells[i];

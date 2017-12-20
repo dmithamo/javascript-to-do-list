@@ -13,7 +13,7 @@ img{
     border: 2px solid black;
     border-radius: 50%;
     height: 200px;
-    margin-left: 37%;
+    /* margin-left: 37%; */
     margin-bottom: 50px;
     margin-top: 1px;
     /* box-shadow: -1px -0.5px 5px rgb(0, 0, 0); */
@@ -37,6 +37,7 @@ button{
     margin: 0px;
     margin-right: 30px;
     font-family: Courier New;
+    -webkit-text-stroke-width: 0.1px;
 }
 
 .hovered-button{
@@ -103,11 +104,13 @@ button{
 .below-table{
     text-align: center;
     padding: 5px;
-    color: black;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 .row{
     width: 100%;
+    margin: auto;
 }
 
 
@@ -180,10 +183,12 @@ input{
     padding: 15px;
 }
 
-p{
+#table-tag{
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 
 
@@ -199,5 +204,6 @@ p{
 .col-8{
     width: 66.67%;
     margin: auto;
+    text-align: center;
 }
 
