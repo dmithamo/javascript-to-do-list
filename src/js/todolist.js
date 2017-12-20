@@ -126,7 +126,7 @@ function emptyTodoField(title, date, time) {
 // Collect user details for  todoItem
 function addTodo() {
     let todoItem = {
-        todoId: todoList.length + 1,
+        todoId: "",
         todoTitle: "",
         todoDueDate: "",
         todoDueTime: ""
@@ -232,6 +232,7 @@ function saveOrDiscard(item) {
 
 function restoreTable() {
     let originalTag = "<p class=\"below-table\" id=\"table-tag\"></p>";
+    
     document.querySelector("#table-tag").innerHTML = originalTag;
     if (todoList.length == 0) {
         document.querySelector("#table-tag").innerText = "So empty :-[ ";
@@ -252,6 +253,7 @@ function listTodos() {
     document.querySelector("#table-body").innerHTML = "";
     for (let i = 0; i < todoList.length; i++) {
         todoItem = todoList[i];
+        todoItem.todoId = i + 1;
         row = "<tr><td class=\"no-style td-body-saved\">" + todoItem.todoId + "." + "</td><td class=\"title-style td-body-saved\">" + todoItem.todoTitle + "</td><td class=\"date-style td-body-saved\">" + todoItem.todoDueDate + "</td><td class=\"time-style td-body-saved\">" + todoItem.todoDueTime + "</td></tr>"
         document.querySelector("#table-body").innerHTML += row;
     }
@@ -311,6 +313,7 @@ function editTodo() {
 
 // Remove a todo
 function deleteTodo() {
+
     // Select Titles, add dblclick listener
     let todoDataCells = document.getElementsByClassName("td-body-saved");
 
@@ -331,14 +334,20 @@ function deleteTodo() {
                 clickedObjectValues = Object.values(todoList[a])
 
                 if(clickedObjectValues[0] == clickedTodo.innerHTML){
-
+                    
+                    
                     clickedTodo.style.background = "red"; 
                     clickedTodo.style.color = "white"; 
                     clickedTodo.innerHTML += "DELETE?";
-
+                    
                     document.querySelector("#table-tag").innerHTML = saveDelete;
                     animateButtons();
+                    
+                    // Disable add todo button
+                    // Later....
 
+
+                    // Handle Back | Delete clicks
                     document.querySelector("#discard").addEventListener("click", function(){
                         todoList.splice(a, 1);
                         restoreTable();
