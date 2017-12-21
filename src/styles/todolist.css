@@ -1,5 +1,5 @@
 body{
-    background: url("../img/use.jpg")no-repeat center center fixed;
+    background: url("../img/use1.jpg")no-repeat center center fixed;
     background-size: cover;
     font-family: Courier New;
     /* background: white; */
@@ -184,12 +184,13 @@ input{
 }
 
 #table-tag{
+    color: greenyellow;
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
-    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: rgb(0, 0, 0);
-}
+}rgb(0, 0, 0)
 
 
 .editing-title{

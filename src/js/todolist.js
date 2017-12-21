@@ -200,19 +200,10 @@ function saveOrDiscard(item) {
         let time = item.todoDueTime;
        
         // Validation
-        if(item.todoTitle !== "" && item.todoDueDate !== "" && item.todoDueTime !== ""){
-            todoList.push(item)
+        if(item.todoTitle === "" || item.todoDueDate === "" || item.todoDueTime === ""){
+            alert("404. That's an error. Please fill the blanks.")
         }
-
-        else if(item.todoTitle === ""){
-            alert("You did not provide a Title. Rudia.")
-        }
-        else if(item.todoDueDate=== ""){
-            alert("You did not provide Date. Rudia.")
-        }
-        else if(item.todoDueTime === ""){
-            alert("You did not provide Time. Rudia.")
-        }
+        todoList.push(item)
 
         // Replace original table-tag, re-enable + button and list todo's
         restoreTable();
