@@ -135,6 +135,10 @@ function addTodo() {
     // Listen for change in input fileds, collect user input
     // 1. The Title
     let title = document.querySelector("#title0");
+    
+    // Default capture:
+    todoItem["todoTitle"] = title.value;
+    // Listen for change
     title.addEventListener("change", function () {
         if(this.value !== ""){
             todoItem["todoTitle"] = this.value;
@@ -142,17 +146,14 @@ function addTodo() {
             alert("Error. No title provided.")
         }
     });
-
-    title.addEventListener("mouseout", function () {
-        if(this.value !== ""){
-            todoItem["todoTitle"] = this.value;
-        }else{
-            alert("Error. No title provided.")
-        }
-    });
+    
     
     // 2. The DueDate
     let dueDate = document.querySelector("#date0");
+    
+    // Default capture:
+    todoItem["todoDueDate"] = dueDate.value;
+    // Listen for change
     dueDate.addEventListener("change", function () {
         if(this.value !== ""){
             todoItem["todoDueDate"] = this.value;
@@ -160,26 +161,15 @@ function addTodo() {
             alert("Error. No Date provided.")
         }
     });
-
-    dueDate.addEventListener("mouseout", function () {
-        if(this.value !== ""){
-            todoItem["todoDueDate"] = this.value;
-        }else{
-            alert("Error. No Date provided.")
-        }
-    });
+    
     
     // 3. The DueTime
     let dueTime = document.querySelector("#time0");
+    
+    // Default capture:
+    todoItem["todoDueTime"] = dueTime.value;
+    // Listen for change
     dueTime.addEventListener("change", function () {
-        if(this.value !== ""){
-            todoItem["todoDueTime"] = this.value;
-        }else{
-            alert("Error. No Time provided.")
-        }
-    });
-
-    dueTime.addEventListener("mouseout", function () {
         if(this.value !== ""){
             todoItem["todoDueTime"] = this.value;
         }else{
