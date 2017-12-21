@@ -23,10 +23,12 @@ function hoverAddButton() {
 }
 
 // Call emptyTodoField() when Add Todo is clicked
+function addNew(){
+    emptyTodoField();
+}
+
 function clickAddButton() {
-    addButton.addEventListener("click", function () {
-        emptyTodoField()
-    });
+    addButton.addEventListener("click", addNew);
 }
 
 
@@ -106,20 +108,21 @@ function emptyTodoField(title, date, time) {
     
     // Check if there exists an empty row; add one if so remove it
     let emptyExists = !!document.querySelector("#empty-row");
-    if(emptyExists){
-        document.getElementById("empty-row").remove();
+    if(!emptyExists){
+        // Append empty todo field
+        let tableBody = document.querySelector("#table-body");
+        tableBody.innerHTML += emptyTodoField;
+    
+        // Append and animate Save | Discard and Add Todo Buttons
+        document.querySelector("#table-tag").innerHTML = saveDiscard;
+        animateButtons()
+    
+        // Execute code to collect user-input  
+        addTodo();
+    }else{
+        alert("404. That's an error.\nPlease dispense with the item you're editing first.")
     }
     
-    // Append empty todo field
-    let tableBody = document.querySelector("#table-body");
-    tableBody.innerHTML += emptyTodoField;
-
-    // Append and animate Save | Discard and Add Todo Buttons
-    document.querySelector("#table-tag").innerHTML = saveDiscard;
-    animateButtons()
-
-    // Execute code to collect user-input  
-    addTodo();
 }
 
 
@@ -191,7 +194,7 @@ function saveOrDiscard(item) {
        
         // Validation
         if(item.todoTitle === "" || item.todoDueDate === "" || item.todoDueTime === ""){
-            alert("404. That's an error. Please fill the blanks.")
+            alert("404. That's an error. Please fill in the blanks.")
         }
         todoList.push(item)
 
@@ -271,9 +274,9 @@ function editTodo() {
                     date = clickedObjectValues[2];
                     time = clickedObjectValues[3];
                     
-                    clickedTodo.style.background = "grey"; 
+                    clickedTodo.style.background = "#7E7E7E"; 
                     clickedTodo.style.color = "white"; 
-                    clickedTodo.innerHTML += "<br>[EDITING...]"; 
+                    clickedTodo.innerHTML += "<br>[EDIT BELOW...]"; 
 
                     emptyTodoField(title, date, time);
                     
@@ -298,23 +301,26 @@ function deleteTodo() {
 
     // Select Titles, add dblclick listener
     let todoDataCells = document.getElementsByClassName("td-body-saved");
-
+    
     // Variables to be re-assigned during the following loops
     let clickedTodo;
     let clickedObjectValues;
-   
+    
     let todoIds = document.getElementsByClassName("no-style");
-
+    
     for (let i = 0; i < todoIds.length; i++) {
         todoIds[i].addEventListener("dblclick", function () {
             
+        
+            // Disable add todo button
+            addButton.removeEventListener("click", addNew)
             // 
             clickedTodo = todoIds[i];
-
+            
             for (let a = 0; a < todoList.length; a++) {
                 
                 clickedObjectValues = Object.values(todoList[a])
-
+                
                 if(clickedObjectValues[0] == clickedTodo.innerHTML){
                     
                     
@@ -325,19 +331,18 @@ function deleteTodo() {
                     document.querySelector("#table-tag").innerHTML = saveDelete;
                     animateButtons();
                     
-                    // Disable add todo button
-                    // Later....
-
-
+                    
                     // Handle Back | Delete clicks
                     document.querySelector("#discard").addEventListener("click", function(){
                         todoList.splice(a, 1);
                         restoreTable();
                         listTodos();
+                        addButton.addEventListener("click", addNew)
                     });
                     document.querySelector("#save").addEventListener("click", function(){
                         restoreTable();
                         listTodos();
+                        addButton.addEventListener("click", addNew)
                     });
                 }
                 
