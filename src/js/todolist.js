@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // The container for all todo's.
 let todoList = [];
@@ -103,7 +103,7 @@ function emptyTodoField(title, date, time) {
         time = currentTime()
     }
 
-    let emptyTodoField = "<tr id=\"empty-row\">" + "<td class=\"no-style td-body\">" + "." + "</td>" + "<td>" + "<input onclick = \"this.select()\" id=\"title0" + "\"" + "required class=\"title-style td-body\" type=\"text\" value=" +"\"" + title  + "\">" + "</td>" + "<td>" + "<input onclick = \"this.select()\" id=\"date0" + "\"" + "required class=\"date-style td-body\" type=\"date\"  value="+"\"" + date + "\"" + " min="+"\"" + date + "\"" + + ">" + "</td>" + "<td>" + "<input onclick = \"this.select()\" id=\"time0" + "\"" + "required class=\"time-style td-body\" type=\"time\" value="+"\"" + time + "\"" + ">" + "</td>" + "</tr>";
+    let emptyTodoField = "<tr id=\"empty-row\">" + "<td class=\"no-style td-body\">" + "." + "</td>" + "<td>" + "<input id=\"title0" + "\"" + "required class=\"title-style td-body\" type=\"text\" value=" +"\"" + title  + "\">" + "</td>" + "<td>" + "<input id=\"date0" + "\"" + "required class=\"date-style td-body\" type=\"date\"  value="+"\"" + date + "\"" + " min="+"\"" + date + "\"" + + ">" + "</td>" + "<td>" + "<input id=\"time0" + "\"" + "required class=\"time-style td-body\" type=\"time\" value="+"\"" + time + "\"" + ">" + "</td>" + "</tr>";
 
     
     // Check if there exists an empty row; add one if so remove it

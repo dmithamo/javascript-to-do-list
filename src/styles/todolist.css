@@ -1,29 +1,29 @@
-body{
-    background: url("../img/use3.jpg")no-repeat center center fixed;
+body {
+    background: url("../img/use.jpg")no-repeat center center fixed;
     background-size: cover;
     font-family: Courier New;
     /* background: white; */
     color: rgb(255, 255, 255);
-    margin-top: -1%;
-    margin-left: 5%; 
+    margin-top: 0%;
+    margin-left: 5%;
 }
 
-img{
+img {
     width: 200px;
     border: 2px solid black;
     border-radius: 50%;
     height: 200px;
-    /* margin-left: 37%; */
     margin-bottom: 50px;
     margin-top: 1px;
-    /* box-shadow: -1px -0.5px 5px rgb(0, 0, 0); */
+    box-shadow: 0 0 15px rgb(0, 0, 0);
 }
-.container{
+
+.container {
     margin-top: 2%;
 }
 
 
-button{
+button {
     background-color: rgb(253, 253, 253);
     border-radius: 4px;
     width: 100px;
@@ -40,7 +40,7 @@ button{
     -webkit-text-stroke-width: 0.1px;
 }
 
-.hovered-button{
+.hovered-button {
     background: rgb(0, 0, 0);
     border: 1px solid rgb(14, 167, 0);
     border-radius: 4px;
@@ -48,17 +48,17 @@ button{
     color: rgb(255, 255, 255);
 }
 
-.hidden-button{
+.hidden-button {
     background: rgb(196, 195, 195);
     border: 1px solid rgb(7, 0, 0);
     color: rgb(165, 165, 165);
 }
 
-::-webkit-input-placeholder{
-    color:rgb(223, 223, 223);
+::-webkit-input-placeholder {
+    color: rgb(223, 223, 223);
 }
 
-.save-delete{
+.save-delete {
     box-shadow: 2px 6px 8px rgba(0, 0, 0, 1);
     border-radius: 5px;
     font-size: 12px;
@@ -68,7 +68,7 @@ button{
     color: rgb(255, 255, 255);
 }
 
-.save-tag{
+.save-tag {
     font-size: 12px;
     font-family: Courier New;
     padding: 15px;
@@ -77,46 +77,46 @@ button{
 }
 
 
-.save{
+.save {
     border: 1px solid rgb(133, 207, 12);
     width: 100px;
     background: rgb(17, 2, 2);
 }
 
-.hovered-save{
+.hovered-save {
     border: 1px solid rgb(15, 235, 15);
     background: rgb(133, 207, 12);
 }
 
 
-.discard{
+.discard {
     border: 1px solid red;
     width: 100px;
     background: rgb(17, 2, 2);
 }
 
-.hovered-discard{
+.hovered-discard {
     border: 1px solid rgb(255, 107, 54);
     background: red;
 }
 
 
-.below-table{
+.below-table {
     text-align: center;
     padding: 5px;
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
 
-.row{
+.row {
     width: 100%;
     margin: auto;
 }
 
 
 
-table{
-    background:rgba(0, 0, 0, 0.5);
+table {
+    background: rgba(0, 0, 0, 0.5);
     box-shadow: 2px 6px 8px rgba(0, 0, 0, 1);
     margin: auto;
     padding: 10px;
@@ -126,7 +126,7 @@ table{
 }
 
 
-thead td{
+thead td {
     padding: 10px;
     margin-left: 0;
     font-weight: bold;
@@ -140,71 +140,74 @@ thead td{
 }
 
 
-input{
+input {
     color: white;
-    background:none;
+    background: none;
     font-family: Courier New;
     font-size: 12px;
 }
 
 
 
-.no-style{
+.no-style {
     width: 30px;
     text-align: center;
-    
-}
-.title-style{
-    width: 350px;
-    text-align: left;
-    
-}
-.date-style{
-    width: 130px;
-    text-align: center;
-    
-}
-.time-style{
-    width: 90px;
-    text-align: center;
-    
+
 }
 
-.td-body{
-    border:0;
+.title-style {
+    width: 350px;
+    text-align: left;
+
+}
+
+.date-style {
+    width: 130px;
+    text-align: center;
+
+}
+
+.time-style {
+    width: 90px;
+    text-align: center;
+
+}
+
+.td-body {
+    border: 0;
     padding: 15px;
 }
 
 
-.td-body-saved{
-    border:0;
+.td-body-saved {
+    border: 0;
     border: 1px solid rgb(24, 247, 24);
     border-radius: 6px;
     padding: 15px;
 }
 
-#table-tag{
+#table-tag {
     color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
     -webkit-text-stroke-width: 0.3px;
     -webkit-text-stroke-color: rgb(0, 0, 0);
-}rgb(0, 0, 0)
+}
 
-
-.editing-title{
-    color:grey;
+rgb(0,
+0,
+0) .editing-title {
+    color: grey;
     background: grey;
 }
 
-.col-4{
+.col-4 {
     width: 33.33%;
 }
 
-.col-8{
+.col-8 {
     width: 66.67%;
     margin: auto;
     text-align: center;
 }
-
