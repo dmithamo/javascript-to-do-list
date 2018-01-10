@@ -7,6 +7,7 @@ body {
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #E1F5C4, #EDE574);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-bottom: 40px;
 }
 
 .container {
@@ -59,7 +60,6 @@ ol,
 .list-tag {
     box-shadow: 0 0 10px black;
     list-style: lower-alpha;
-    /* width: 40%; */
     background-color: rgb(255, 255, 255);
     margin-top: 15px;
     padding: 5px 0 10px 15px;
@@ -99,4 +99,18 @@ li {
     height: 30px;
     line-height: 30px;
     border: 1px solid black;
+}
+
+#footer {
+    text-align: right;
+    height: 20px;
+    line-height: 40px;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    left: 0%;
+    margin-bottom: 1%;
+    margin-right: 65px;
+    color: white;
+    text-shadow: 0 0 10px black;
 }
