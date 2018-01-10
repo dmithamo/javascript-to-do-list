@@ -1,10 +1,12 @@
 body {
     /* font-family: 'Muli', sans-serif; */
     font-family: 'Montserrat', sans-serif;
-    background: #EDE574;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #E1F5C4, #EDE574);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #E1F5C4, #EDE574); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #EDE574;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #E1F5C4, #EDE574);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #E1F5C4, #EDE574);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .container {
@@ -16,20 +18,19 @@ body {
     width: 40%;
     margin-top: 20%;
     color: white;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.75);
     text-transform: uppercase;
     margin-left: 1%;
-    text-align: end; 
+    text-align: end;
     font-weight: 900;
     letter-spacing: 3px;
-    
+    text-shadow: 0 0 5px black;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-size: 3em;
     margin-top: 0;
     margin-bottom: 0;
-    /* border-bottom: 1px solid black; */
 }
 
 h2 {
@@ -54,16 +55,16 @@ h2 {
     padding: 20px;
 }
 
-
-ol, .list-tag {
+ol,
+.list-tag {
     box-shadow: 0 0 10px black;
     list-style: lower-alpha;
     /* width: 40%; */
     background-color: rgb(255, 255, 255);
     margin-top: 15px;
-    padding:5px 0 10px 15px;
+    padding: 5px 0 10px 15px;
     box-sizing: border-box;
-    /* border: 1px solid black; */
+    border-radius: 2px;
 }
 
 .list-tag {
@@ -80,8 +81,9 @@ ol, .list-tag {
 
 .list-plus {
     float: right;
-    margin: 9px 0;
+    margin: 7px 0;
     margin-right: 15px;
+    color: black;
 }
 
 .time {
@@ -91,10 +93,10 @@ ol, .list-tag {
 li {
     list-style-position: inside;
     color: rgb(255, 255, 255);
-    padding:5px 15px;
+    padding: 5px 15px;
     background-color: rgba(0, 0, 0, 1);
     margin-top: 5px;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     border: 1px solid black;
 }
