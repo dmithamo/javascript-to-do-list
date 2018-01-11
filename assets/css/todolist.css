@@ -95,6 +95,12 @@ ol,
     font-size: 1.5em;
 }
 
+.fa.fa-plus-circle:hover {
+    text-shadow: 0 0 3px rgb(233, 236, 18);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.7em;
+}
+
 .time {
     float: right;
 }
