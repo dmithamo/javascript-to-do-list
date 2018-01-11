@@ -12,9 +12,11 @@ setInterval(currentTimeDate, 100);
 
 // Add functionality top add-button
 // Display text input field on click
+$("#list-plus").on("click", function(){
+    $("input").css("display", "block")
+})
 
-// alert($("#list-plus"));
-
+// Append footer for empty todo list
 function checkIfLi(){
     var presentTodos = $("li").html();
     if(presentTodos === undefined){
@@ -23,4 +25,4 @@ function checkIfLi(){
     }
 }
 
-// "<li><span class='delete'></span>" + Item + "<span class='time'>" + timeDue + "</span></li>"
+// "<li><span class='delete'></span>" + item + "<span class='time'>" + timeDue + "</span></li>"
