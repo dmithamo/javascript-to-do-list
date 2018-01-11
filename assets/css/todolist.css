@@ -53,7 +53,6 @@ h2 {
 .the-list {
     width: 50%;
     color: black;
-    /* padding: 20px; */
     font-size: 14px;
 }
 
@@ -63,31 +62,30 @@ input {
     box-shadow: 0 0 10px black;
     list-style: lower-alpha;
     background-color: rgb(0, 0, 0, 0.5);
-    margin-top: 15px;
     padding: 5px 0 10px 15px;
     box-sizing: border-box;
     border-radius: 2px;
-    font-family: 'Muli', sans-serif;
+    margin-bottom: 2px;
     text-transform: uppercase;
+    transition: 1500ms all;
 }
 
+
 input {
-    height: 30px;
+    font-family: 'Muli', sans-serif;
+    margin-bottom: 2px;
+    height: 0;
     line-height: 30px;
     outline: none;
     border: 1px solid rgba(0, 0, 0, 0.6);
     border: none;
     font-size: 10px;
-    display: none;
-    transition: 1s all;
-    background: none;
+    background: rgb(255, 255, 255);
     box-shadow: none;
     padding: 0 15px;
+    transition: 700ms all;
 }
 
-input:focus {
-    background: white;
-}
 
 #enter-text {
     width: 70%;
@@ -96,6 +94,7 @@ input:focus {
 }
 
 #enter-time {
+    float: left;
     width: 25%;
 }
 
@@ -128,20 +127,40 @@ input:focus {
     font-size: 1.7em;
 }
 
+.delete {
+    transition: 100ms all;
+    color: red;
+    height: 20px;
+    text-align: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    opacity: 0;
+    font-size: 2em;
+    font-weight: 900;
+    float: left;
+}
+
 .time {
     float: right;
 }
 
 li {
+    margin-top: 1px;
     list-style-position: inside;
     color: rgb(255, 255, 255);
-    padding: 5px 15px;
+    padding: 5px 10px 5px 5px;
     background-color: rgba(0, 0, 0, 1);
-    margin-top: 5px;
     height: 20px;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 20px;
     border: 1px solid black;
+    letter-spacing: 3px;
+    font-family: 'Muli', sans-serif;
+    transition: 1200ms all;
+}
+
+li:hover .delete {
+    opacity: 1;
 }
 
 #list-footer {
@@ -167,4 +186,11 @@ li {
     color: white;
     text-shadow: 0 0 10px black;
     background: rgb(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.done {
+    color: gray;
+    text-decoration: line-through;
+    text-decoration-color: gray;
 }
