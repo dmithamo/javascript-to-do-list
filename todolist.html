@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +10,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>todoList</title>
 </head>
+
 <body>
     <div class="container">
         <div class="main-title">
             <h1>khalegi's</h1>
             <h2>todo List</h2>
-            <p class="current"><span id="time-now">23:00</span><i class=" now fa fa-clock-o" aria-hidden="true"></i></p>
-            <p class="current"><span id="date-today">10-01-2018</span><i class=" now fa fa-calendar" aria-hidden="true"></i></p>
+            <p class="current">
+                <span id="time-now">23:00</span>
+                <i class=" now fa fa-clock-o" aria-hidden="true"></i>
+            </p>
+            <p class="current">
+                <span id="date-today">10-01-2018</span>
+                <i class=" now fa fa-calendar" aria-hidden="true"></i>
+            </p>
         </div>
         <div class="the-list">
-            <p class="list-tag"><span id="date-showing">10-01-2018</span><span><i class="list-plus fa fa-plus-circle" aria-hidden="true"></i></span></p>
+            <p class="list-header">
+                <span id="date-showing">10-01-2018</span>
+                <span>
+                    <i id="list-plus" class="fa fa-plus-circle" aria-hidden="true"></i>
+                </span>
+            </p>
             <ol>
-                <li><span class="delete"></span> Item 1 <span class="time">10:30</span></li>
-                <li><span class="delete"></span> Item 1 <span class="time">10:30</span></li>
-                <li><span class="delete"></span> Item 1 <span class="time">10:30</span></li>
-                <li><span class="delete"></span> Item 1 <span class="time">10:30</span></li>
+                <!-- <li>Denno</li> -->
             </ol>
+            <p id="list-footer"></p> 
         </div>
 
     </div>
     <div id="footer">t_nane &COPY; 2018</div>
+
     <script src="assets/js/lib/moment.js"></script>
     <script src="assets/js/lib/jquery-3.2.1.js"></script>
     <script src="assets/js/todolist.js"></script>
 </body>
+
 </html>
