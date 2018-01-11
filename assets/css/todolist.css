@@ -9,8 +9,8 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
     margin-bottom: 40px;
-    margin-left: 65px;
-    margin-right: 65px;
+    margin-left: 4%;
+    margin-right: 4%;
 }
 
 .container {
@@ -113,6 +113,7 @@ li {
 
 
 #footer {
+    width: 96%;
     text-align: right;
     height: 20px;
     line-height: 40px;
@@ -124,4 +125,5 @@ li {
     margin-right: 5px;
     color: white;
     text-shadow: 0 0 10px black;
+    background: rgb(0, 0, 0, 0.5);
 }
