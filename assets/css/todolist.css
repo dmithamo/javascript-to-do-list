@@ -1,13 +1,16 @@
 body {
-    /* font-family: 'Muli', sans-serif; */
     font-family: 'Montserrat', sans-serif;
+    
     background: #EDE574;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #E1F5C4, #EDE574);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #E1F5C4, #EDE574);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     margin-bottom: 40px;
+    margin-left: 65px;
+    margin-right: 65px;
 }
 
 .container {
@@ -17,10 +20,10 @@ body {
 
 .main-title {
     width: 40%;
-    margin-top: 20%;
+    margin-top: 18%;
+    margin-right: 10%;
     color: white;
     text-transform: uppercase;
-    margin-left: 1%;
     text-align: end;
     font-weight: 900;
     letter-spacing: 3px;
@@ -52,38 +55,44 @@ h2 {
 .the-list {
     width: 50%;
     color: black;
-    margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 ol,
 .list-tag {
     box-shadow: 0 0 10px black;
     list-style: lower-alpha;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0, 0.5);
     margin-top: 15px;
     padding: 5px 0 10px 15px;
     box-sizing: border-box;
     border-radius: 2px;
+    font-family: 'Muli', sans-serif;
 }
 
+
 .list-tag {
-    font-size: 1.5em;
-    height: 40px;
-    line-height: 40px;
-    text-transform: uppercase;
+    color: white;
     font-weight: 900;
+    font-size: 1.05em;
+    height: 33px;
+    line-height: 33px;
+    text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 0;
     padding: 0;
     padding-left: 15px;
+    text-shadow: 0 0 3px rgb(0, 0, 0);
 }
 
-.list-plus {
+
+.fa.fa-plus-circle {
+    height: 33px;
+    line-height: 33px;
     float: right;
-    margin: 7px 0;
     margin-right: 15px;
-    color: black;
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
 }
 
 .time {
@@ -91,15 +100,17 @@ ol,
 }
 
 li {
+    font-size: 14px;
     list-style-position: inside;
     color: rgb(255, 255, 255);
     padding: 5px 15px;
     background-color: rgba(0, 0, 0, 1);
     margin-top: 5px;
-    height: 30px;
-    line-height: 30px;
+    height: 20px;
+    line-height: 20px;
     border: 1px solid black;
 }
+
 
 #footer {
     text-align: right;
@@ -110,7 +121,7 @@ li {
     right: 0%;
     left: 0%;
     margin-bottom: 1%;
-    margin-right: 65px;
+    margin-right: 5px;
     color: white;
     text-shadow: 0 0 10px black;
 }
