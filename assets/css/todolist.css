@@ -1,9 +1,9 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    /* background: #EDE574;
+    background: #EDE574;
     background: -webkit-linear-gradient(to left, #E1F5C4, #EDE574);
-    background: linear-gradient(to left, #E1F5C4, #EDE574); */
-    background-image: url("../img/use.jpg");
+    background: linear-gradient(to left, #E1F5C4, #EDE574);
+    /* background-image: url("../img/use.jpg"); */
     background-size: cover;
     margin-bottom: 40px;
     margin-left: 4%;
