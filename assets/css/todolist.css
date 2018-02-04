@@ -1,15 +1,16 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Great Vibes', sans-serif;
     background: #EDE574;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #E1F5C4, #EDE574);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #E1F5C4, #EDE574);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #070000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #070000, #4C0001, #070000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #070000, #4C0001, #070000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin-bottom: 40px;
     margin-left: 4%;
     margin-right: 4%;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    letter-spacing: 8px;
+    color: gold;
 }
 
 .container {
@@ -21,11 +22,9 @@ body {
     width: 40%;
     margin-top: 18%;
     margin-right: 10%;
-    color: white;
     text-align: end;
     font-weight: 900;
-    letter-spacing: 3px;
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 5px black; 
 }
 
 h1,
@@ -66,13 +65,11 @@ input {
     box-sizing: border-box;
     border-radius: 2px;
     margin-bottom: 2px;
-    text-transform: uppercase;
     transition: 1500ms all;
 }
 
 
 input {
-    font-family: 'Muli', sans-serif;
     margin-bottom: 2px;
     height: 0;
     line-height: 30px;
@@ -104,8 +101,6 @@ input {
     font-size: 1.05em;
     height: 33px;
     line-height: 33px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
     margin-bottom: 0;
     padding: 0;
     padding-left: 15px;
@@ -154,8 +149,6 @@ li {
     font-size: 11px;
     line-height: 20px;
     border: 1px solid black;
-    letter-spacing: 3px;
-    font-family: 'Muli', sans-serif;
     transition: 1200ms all;
 }
 
@@ -165,9 +158,7 @@ li:hover .delete {
 
 #list-footer {
     color: white;
-    font-family: 'Montserat';
     text-align: center;
-    text-transform: uppercase;
     font-size: 0.7em;
     text-shadow: 0 0 3px black;
 }
